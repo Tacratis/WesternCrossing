@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=1]
+
+[ext_resource path="res://Scripts/Animator.gd" type="Script" id=1]
+[ext_resource path="res://Assets/snake1.png" type="Texture" id=2]
+[ext_resource path="res://Assets/rock.png" type="Texture" id=3]
+[ext_resource path="res://Assets/chief.png" type="Texture" id=4]
+[ext_resource path="res://Assets/teepee.png" type="Texture" id=5]
+
+[node name="Animator" type="Node2D"]
+
+script/script = ExtResource( 1 )
+
+[node name="On" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 0.2
+one_shot = false
+autostart = false
+
+[node name="Off" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 0.2
+one_shot = false
+autostart = false
+
+[node name="Snake" type="Sprite" parent="."]
+
+visibility/visible = false
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="Rock" type="Sprite" parent="."]
+
+visibility/visible = false
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="Chief" type="Sprite" parent="."]
+
+visibility/visible = false
+texture = ExtResource( 4 )
+
+[node name="Teepee" type="Sprite" parent="."]
+
+visibility/visible = false
+texture = ExtResource( 5 )
+
+[connection signal="timeout" from="On" to="." method="_on_On_timeout"]
+
+[connection signal="timeout" from="Off" to="." method="_on_Off_timeout"]
+
+

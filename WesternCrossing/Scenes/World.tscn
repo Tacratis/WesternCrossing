@@ -1,0 +1,991 @@
+[gd_scene load_steps=46 format=1]
+
+[ext_resource path="res://Scripts/World.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Controls.gd" type="Script" id=2]
+[ext_resource path="res://Assets/background.png" type="Texture" id=3]
+[ext_resource path="res://Assets/bullets.png" type="Texture" id=4]
+[ext_resource path="res://Assets/miles.png" type="Texture" id=5]
+[ext_resource path="res://Scenes/Digit.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scripts/ResetButton.gd" type="Script" id=7]
+[ext_resource path="res://Assets/whiteButton.png" type="Texture" id=8]
+[ext_resource path="res://Assets/whitePressed.png" type="Texture" id=9]
+[ext_resource path="res://Scripts/PauseButton.gd" type="Script" id=10]
+[ext_resource path="res://Scripts/UpButton.gd" type="Script" id=11]
+[ext_resource path="res://Assets/redButton.png" type="Texture" id=12]
+[ext_resource path="res://Assets/redPressed.png" type="Texture" id=13]
+[ext_resource path="res://Scripts/DownButton.gd" type="Script" id=14]
+[ext_resource path="res://Scripts/ShootButton.gd" type="Script" id=15]
+[ext_resource path="res://Assets/button1.png" type="Texture" id=16]
+[ext_resource path="res://Assets/button2.png" type="Texture" id=17]
+[ext_resource path="res://Assets/rip.png" type="Texture" id=18]
+[ext_resource path="res://Scenes/Animator.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Assets/wagon.png" type="Texture" id=20]
+[ext_resource path="res://Assets/wheelFull.png" type="Texture" id=21]
+[ext_resource path="res://Assets/wheelBreakable.png" type="Texture" id=22]
+[ext_resource path="res://Assets/ox1.png" type="Texture" id=23]
+[ext_resource path="res://Assets/oxBackB1.png" type="Texture" id=24]
+[ext_resource path="res://Assets/oxBack1.png" type="Texture" id=25]
+[ext_resource path="res://Assets/pow.png" type="Texture" id=26]
+[ext_resource path="res://Assets/rock.png" type="Texture" id=27]
+[ext_resource path="res://Assets/snake2.png" type="Texture" id=28]
+[ext_resource path="res://Assets/mountain.png" type="Texture" id=29]
+[ext_resource path="res://Assets/river.png" type="Texture" id=30]
+[ext_resource path="res://Assets/teepee.png" type="Texture" id=31]
+[ext_resource path="res://Assets/chief.png" type="Texture" id=32]
+[ext_resource path="res://Scripts/Wagon.gd" type="Script" id=33]
+[ext_resource path="res://Assets/wheel1.png" type="Texture" id=34]
+[ext_resource path="res://Assets/wheel2.png" type="Texture" id=35]
+[ext_resource path="res://Assets/ox2.png" type="Texture" id=36]
+[ext_resource path="res://Assets/ox3.png" type="Texture" id=37]
+[ext_resource path="res://Assets/ox4.png" type="Texture" id=38]
+[ext_resource path="res://Assets/oxBackB2.png" type="Texture" id=39]
+[ext_resource path="res://Assets/oxBack2.png" type="Texture" id=40]
+[ext_resource path="res://Scripts/Horizon.gd" type="Script" id=41]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 34 ), ExtResource( 35 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 36 ), ExtResource( 23 ), ExtResource( 37 ), ExtResource( 38 ) ],
+"loop": true,
+"name": "default",
+"speed": 8.0
+} ]
+
+[sub_resource type="SpriteFrames" id=3]
+
+animations = [ {
+"frames": [ ExtResource( 39 ), ExtResource( 24 ) ],
+"loop": true,
+"name": "default",
+"speed": 4.0
+} ]
+
+[sub_resource type="SpriteFrames" id=4]
+
+animations = [ {
+"frames": [ ExtResource( 40 ), ExtResource( 25 ) ],
+"loop": true,
+"name": "default",
+"speed": 4.0
+} ]
+
+[node name="World" type="Node2D"]
+
+script/script = ExtResource( 1 )
+
+[node name="Controls" type="Node2D" parent="."]
+
+process/pause_mode = 2
+script/script = ExtResource( 2 )
+
+[node name="Background" type="Sprite" parent="."]
+
+transform/pos = Vector2( 510.943, 299.608 )
+texture = ExtResource( 3 )
+
+[node name="Icon" type="Sprite" parent="."]
+
+transform/pos = Vector2( 714, 441 )
+texture = ExtResource( 4 )
+
+[node name="Miles" type="Sprite" parent="."]
+
+transform/pos = Vector2( 696.974, 160.21 )
+texture = ExtResource( 5 )
+
+[node name="Bullets" type="Node2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 734, 441 )
+transform/scale = Vector2( 0.15, 0.15 )
+
+[node name="Tens" parent="Bullets" instance=ExtResource( 6 )]
+
+[node name="Ones" parent="Bullets" instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 76, 0 )
+
+[node name="Mileage" type="Node2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 735, 165 )
+transform/scale = Vector2( 0.15, 0.15 )
+
+[node name="Cs" parent="Mileage" instance=ExtResource( 6 )]
+
+transform/pos = Vector2( -76, 0 )
+
+[node name="Tens" parent="Mileage" instance=ExtResource( 6 )]
+
+[node name="Ones" parent="Mileage" instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 76, 0 )
+
+[node name="Reset" type="Control" parent="."]
+
+process/pause_mode = 2
+editor/display_folded = true
+hint/tooltip = "Start a new game"
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 878.0
+margin/top = 97.0
+margin/right = 924.0
+margin/bottom = 124.0
+script/script = ExtResource( 7 )
+
+[node name="Released" type="Sprite" parent="Reset"]
+
+transform/pos = Vector2( 23.5, 13.5 )
+texture = ExtResource( 8 )
+
+[node name="Pressed" type="Sprite" parent="Reset"]
+
+visibility/visible = false
+transform/pos = Vector2( 23.5, 13.5 )
+texture = ExtResource( 9 )
+
+[node name="Pause" type="Control" parent="."]
+
+process/pause_mode = 2
+editor/display_folded = true
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 93.0
+margin/top = 97.0
+margin/right = 139.0
+margin/bottom = 124.0
+script/script = ExtResource( 10 )
+
+[node name="Released" type="Sprite" parent="Pause"]
+
+transform/pos = Vector2( 22.5, 13.5 )
+texture = ExtResource( 8 )
+
+[node name="Pressed" type="Sprite" parent="Pause"]
+
+transform/pos = Vector2( 22.5, 13.5 )
+texture = ExtResource( 9 )
+
+[node name="Up" type="Control" parent="."]
+
+editor/display_folded = true
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 870.0
+margin/top = 344.0
+margin/right = 939.0
+margin/bottom = 385.0
+script/script = ExtResource( 11 )
+
+[node name="Released" type="Sprite" parent="Up"]
+
+transform/pos = Vector2( 33, 21 )
+texture = ExtResource( 12 )
+
+[node name="Pressed" type="Sprite" parent="Up"]
+
+transform/pos = Vector2( 33, 21 )
+texture = ExtResource( 13 )
+
+[node name="Down" type="Control" parent="."]
+
+editor/display_folded = true
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 870.0
+margin/top = 432.0
+margin/right = 939.0
+margin/bottom = 473.0
+script/script = ExtResource( 14 )
+
+[node name="Released" type="Sprite" parent="Down"]
+
+transform/pos = Vector2( 33, 21 )
+texture = ExtResource( 12 )
+
+[node name="Pressed" type="Sprite" parent="Down"]
+
+transform/pos = Vector2( 33, 21 )
+texture = ExtResource( 13 )
+
+[node name="Shoot" type="Control" parent="."]
+
+editor/display_folded = true
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 86.0
+margin/top = 349.0
+margin/right = 150.0
+margin/bottom = 411.0
+script/script = ExtResource( 15 )
+
+[node name="Up" type="Sprite" parent="Shoot"]
+
+transform/pos = Vector2( 31, 31 )
+texture = ExtResource( 16 )
+
+[node name="Down" type="Sprite" parent="Shoot"]
+
+transform/pos = Vector2( 31, 31 )
+texture = ExtResource( 17 )
+
+[node name="RIP" type="Sprite" parent="."]
+
+editor/display_folded = true
+visibility/visible = false
+transform/pos = Vector2( 500.562, 345.184 )
+texture = ExtResource( 18 )
+
+[node name="RIPTimer" type="Timer" parent="RIP"]
+
+process_mode = 1
+wait_time = 1.6
+one_shot = false
+autostart = false
+
+[node name="Animator" parent="." instance=ExtResource( 19 )]
+
+[node name="Generator" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 0.6
+one_shot = false
+autostart = true
+
+[node name="Positions" type="Node2D" parent="."]
+
+visibility/opacity = 0.05
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Up" type="Node2D" parent="Positions"]
+
+editor/display_folded = true
+transform/pos = Vector2( 709, 289 )
+transform/scale = Vector2( 0.7, 0.7 )
+
+[node name="WagonIcon" type="Node2D" parent="Positions/Up"]
+
+[node name="Wagon" type="Sprite" parent="Positions/Up/WagonIcon"]
+
+transform/pos = Vector2( 2, 0 )
+texture = ExtResource( 20 )
+
+[node name="Wheels" type="Node2D" parent="Positions/Up/WagonIcon/Wagon"]
+
+[node name="Wheel1" type="Sprite" parent="Positions/Up/WagonIcon/Wagon/Wheels"]
+
+transform/pos = Vector2( -20, 24 )
+texture = ExtResource( 21 )
+
+[node name="Wheel2" type="Sprite" parent="Positions/Up/WagonIcon/Wagon/Wheels"]
+
+transform/pos = Vector2( 13, 24 )
+texture = ExtResource( 21 )
+
+[node name="Breakable" type="Sprite" parent="Positions/Up/WagonIcon/Wagon/Wheels"]
+
+transform/pos = Vector2( -30, 21 )
+texture = ExtResource( 22 )
+
+[node name="Animals" type="Node2D" parent="Positions/Up/WagonIcon"]
+
+editor/display_folded = true
+transform/pos = Vector2( -71, 7 )
+
+[node name="FarFront" type="Node2D" parent="Positions/Up/WagonIcon/Animals"]
+
+editor/display_folded = true
+transform/pos = Vector2( -26, 4 )
+
+[node name="Sprite" type="Sprite" parent="Positions/Up/WagonIcon/Animals/FarFront"]
+
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 23 )
+
+[node name="CloseFront" type="Node2D" parent="Positions/Up/WagonIcon/Animals"]
+
+editor/display_folded = true
+transform/pos = Vector2( 10, 4 )
+
+[node name="Sprite1" type="Sprite" parent="Positions/Up/WagonIcon/Animals/CloseFront"]
+
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 23 )
+
+[node name="FarBack" type="Node2D" parent="Positions/Up/WagonIcon/Animals"]
+
+editor/display_folded = true
+transform/pos = Vector2( -15, -4 )
+
+[node name="Sprite" type="Sprite" parent="Positions/Up/WagonIcon/Animals/FarBack"]
+
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 24 )
+
+[node name="CloseBack" type="Node2D" parent="Positions/Up/WagonIcon/Animals"]
+
+editor/display_folded = true
+transform/pos = Vector2( 27, -5 )
+
+[node name="Sprite" type="Sprite" parent="Positions/Up/WagonIcon/Animals/CloseBack"]
+
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 25 )
+
+[node name="Pow" type="Sprite" parent="Positions/Up/WagonIcon"]
+
+transform/pos = Vector2( -53, -20 )
+texture = ExtResource( 26 )
+
+[node name="Obstacles" type="Node2D" parent="Positions/Up"]
+
+editor/display_folded = true
+
+[node name="Rock0" type="Sprite" parent="Positions/Up/Obstacles"]
+
+transform/pos = Vector2( -34.2857, 27 )
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 27 )
+
+[node name="Rock1" type="Sprite" parent="Positions/Up/Obstacles"]
+
+transform/pos = Vector2( -96.5, 27 )
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 27 )
+
+[node name="Rock2" type="Sprite" parent="Positions/Up/Obstacles"]
+
+transform/pos = Vector2( -174.286, 27 )
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 27 )
+
+[node name="Rock3" type="Sprite" parent="Positions/Up/Obstacles"]
+
+transform/pos = Vector2( -277.143, 27 )
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 27 )
+
+[node name="Rock4" type="Sprite" parent="Positions/Up/Obstacles"]
+
+transform/pos = Vector2( -384.285, 27 )
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 27 )
+
+[node name="Rock5" type="Sprite" parent="Positions/Up/Obstacles"]
+
+transform/pos = Vector2( -477.141, 27 )
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 27 )
+
+[node name="Rock6" type="Sprite" parent="Positions/Up/Obstacles"]
+
+transform/pos = Vector2( -585.713, 27 )
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 27 )
+
+[node name="Snake0" type="Sprite" parent="Positions/Up/Obstacles"]
+
+transform/pos = Vector2( -120.218, 23.3216 )
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 28 )
+
+[node name="Snake1" type="Sprite" parent="Positions/Up/Obstacles"]
+
+transform/pos = Vector2( -200.218, 23.3216 )
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 28 )
+
+[node name="Snake2" type="Sprite" parent="Positions/Up/Obstacles"]
+
+transform/pos = Vector2( -325.931, 23.3216 )
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 28 )
+
+[node name="Snake3" type="Sprite" parent="Positions/Up/Obstacles"]
+
+transform/pos = Vector2( -445.93, 23.3216 )
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 28 )
+
+[node name="Snake4" type="Sprite" parent="Positions/Up/Obstacles"]
+
+transform/pos = Vector2( -564.502, 23.3216 )
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 28 )
+
+[node name="Snake5" type="Sprite" parent="Positions/Up/Obstacles"]
+
+transform/pos = Vector2( -627.36, 23.3216 )
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 28 )
+
+[node name="Middle" type="Node2D" parent="Positions"]
+
+editor/display_folded = true
+transform/pos = Vector2( 689, 346 )
+transform/scale = Vector2( 0.9, 0.9 )
+
+[node name="WagonIcon" type="Node2D" parent="Positions/Middle"]
+
+[node name="Wagon" type="Sprite" parent="Positions/Middle/WagonIcon"]
+
+transform/pos = Vector2( 2, 0 )
+texture = ExtResource( 20 )
+
+[node name="Wheels" type="Node2D" parent="Positions/Middle/WagonIcon/Wagon"]
+
+[node name="Wheel1" type="Sprite" parent="Positions/Middle/WagonIcon/Wagon/Wheels"]
+
+transform/pos = Vector2( -20, 24 )
+texture = ExtResource( 21 )
+
+[node name="Wheel2" type="Sprite" parent="Positions/Middle/WagonIcon/Wagon/Wheels"]
+
+transform/pos = Vector2( 13, 24 )
+texture = ExtResource( 21 )
+
+[node name="Breakable" type="Sprite" parent="Positions/Middle/WagonIcon/Wagon/Wheels"]
+
+transform/pos = Vector2( -30, 21 )
+texture = ExtResource( 22 )
+
+[node name="Animals" type="Node2D" parent="Positions/Middle/WagonIcon"]
+
+editor/display_folded = true
+transform/pos = Vector2( -71, 7 )
+
+[node name="FarFront" type="Node2D" parent="Positions/Middle/WagonIcon/Animals"]
+
+editor/display_folded = true
+transform/pos = Vector2( -26, 4 )
+
+[node name="Sprite" type="Sprite" parent="Positions/Middle/WagonIcon/Animals/FarFront"]
+
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 23 )
+
+[node name="CloseFront" type="Node2D" parent="Positions/Middle/WagonIcon/Animals"]
+
+editor/display_folded = true
+transform/pos = Vector2( 10, 4 )
+
+[node name="Sprite1" type="Sprite" parent="Positions/Middle/WagonIcon/Animals/CloseFront"]
+
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 23 )
+
+[node name="FarBack" type="Node2D" parent="Positions/Middle/WagonIcon/Animals"]
+
+editor/display_folded = true
+transform/pos = Vector2( -15, -4 )
+
+[node name="Sprite" type="Sprite" parent="Positions/Middle/WagonIcon/Animals/FarBack"]
+
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 24 )
+
+[node name="CloseBack" type="Node2D" parent="Positions/Middle/WagonIcon/Animals"]
+
+editor/display_folded = true
+transform/pos = Vector2( 27, -5 )
+
+[node name="Sprite" type="Sprite" parent="Positions/Middle/WagonIcon/Animals/CloseBack"]
+
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 25 )
+
+[node name="Pow" type="Sprite" parent="Positions/Middle/WagonIcon"]
+
+transform/pos = Vector2( -53, -20 )
+texture = ExtResource( 26 )
+
+[node name="Obstacles" type="Node2D" parent="Positions/Middle"]
+
+editor/display_folded = true
+
+[node name="Rock0" type="Sprite" parent="Positions/Middle/Obstacles"]
+
+transform/pos = Vector2( -34.2857, 27 )
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 27 )
+
+[node name="Rock1" type="Sprite" parent="Positions/Middle/Obstacles"]
+
+transform/pos = Vector2( -96.5, 27 )
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 27 )
+
+[node name="Rock2" type="Sprite" parent="Positions/Middle/Obstacles"]
+
+transform/pos = Vector2( -166.508, 27 )
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 27 )
+
+[node name="Rock3" type="Sprite" parent="Positions/Middle/Obstacles"]
+
+transform/pos = Vector2( -259.365, 27 )
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 27 )
+
+[node name="Rock4" type="Sprite" parent="Positions/Middle/Obstacles"]
+
+transform/pos = Vector2( -336.507, 27 )
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 27 )
+
+[node name="Rock5" type="Sprite" parent="Positions/Middle/Obstacles"]
+
+transform/pos = Vector2( -423.808, 27 )
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 27 )
+
+[node name="Snake0" type="Sprite" parent="Positions/Middle/Obstacles"]
+
+transform/pos = Vector2( -120.218, 23.3216 )
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 28 )
+
+[node name="Snake1" type="Sprite" parent="Positions/Middle/Obstacles"]
+
+transform/pos = Vector2( -185.773, 23.3216 )
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 28 )
+
+[node name="Snake2" type="Sprite" parent="Positions/Middle/Obstacles"]
+
+transform/pos = Vector2( -277.042, 23.3216 )
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 28 )
+
+[node name="Snake3" type="Sprite" parent="Positions/Middle/Obstacles"]
+
+transform/pos = Vector2( -352.597, 23.3216 )
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 28 )
+
+[node name="Snake4" type="Sprite" parent="Positions/Middle/Obstacles"]
+
+transform/pos = Vector2( -440.375, 23.3216 )
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 28 )
+
+[node name="Down" type="Node2D" parent="Positions"]
+
+editor/display_folded = true
+transform/pos = Vector2( 657, 415 )
+
+[node name="WagonIcon" type="Node2D" parent="Positions/Down"]
+
+editor/display_folded = true
+
+[node name="Wagon" type="Sprite" parent="Positions/Down/WagonIcon"]
+
+editor/display_folded = true
+transform/pos = Vector2( 2, 0 )
+texture = ExtResource( 20 )
+
+[node name="Wheels" type="Node2D" parent="Positions/Down/WagonIcon/Wagon"]
+
+[node name="Wheel1" type="Sprite" parent="Positions/Down/WagonIcon/Wagon/Wheels"]
+
+transform/pos = Vector2( -20, 24 )
+texture = ExtResource( 21 )
+
+[node name="Wheel2" type="Sprite" parent="Positions/Down/WagonIcon/Wagon/Wheels"]
+
+transform/pos = Vector2( 13, 24 )
+texture = ExtResource( 21 )
+
+[node name="Breakable" type="Sprite" parent="Positions/Down/WagonIcon/Wagon/Wheels"]
+
+transform/pos = Vector2( -30, 21 )
+texture = ExtResource( 22 )
+
+[node name="Animals" type="Node2D" parent="Positions/Down/WagonIcon"]
+
+editor/display_folded = true
+transform/pos = Vector2( -71, 7 )
+
+[node name="FarFront" type="Node2D" parent="Positions/Down/WagonIcon/Animals"]
+
+editor/display_folded = true
+transform/pos = Vector2( -26, 4 )
+
+[node name="Sprite" type="Sprite" parent="Positions/Down/WagonIcon/Animals/FarFront"]
+
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 23 )
+
+[node name="CloseFront" type="Node2D" parent="Positions/Down/WagonIcon/Animals"]
+
+editor/display_folded = true
+transform/pos = Vector2( 10, 4 )
+
+[node name="Sprite1" type="Sprite" parent="Positions/Down/WagonIcon/Animals/CloseFront"]
+
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 23 )
+
+[node name="FarBack" type="Node2D" parent="Positions/Down/WagonIcon/Animals"]
+
+editor/display_folded = true
+transform/pos = Vector2( -15, -4 )
+
+[node name="Sprite" type="Sprite" parent="Positions/Down/WagonIcon/Animals/FarBack"]
+
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 24 )
+
+[node name="CloseBack" type="Node2D" parent="Positions/Down/WagonIcon/Animals"]
+
+editor/display_folded = true
+transform/pos = Vector2( 27, -5 )
+
+[node name="Sprite" type="Sprite" parent="Positions/Down/WagonIcon/Animals/CloseBack"]
+
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 25 )
+
+[node name="Pow" type="Sprite" parent="Positions/Down/WagonIcon"]
+
+transform/pos = Vector2( -53, -20 )
+texture = ExtResource( 26 )
+
+[node name="Obstacles" type="Node2D" parent="Positions/Down"]
+
+[node name="Rock0" type="Sprite" parent="Positions/Down/Obstacles"]
+
+transform/pos = Vector2( -34.2857, 27 )
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 27 )
+
+[node name="Rock1" type="Sprite" parent="Positions/Down/Obstacles"]
+
+transform/pos = Vector2( -96.5, 27 )
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 27 )
+
+[node name="Rock2" type="Sprite" parent="Positions/Down/Obstacles"]
+
+transform/pos = Vector2( -164.286, 27 )
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 27 )
+
+[node name="Rock3" type="Sprite" parent="Positions/Down/Obstacles"]
+
+transform/pos = Vector2( -253.143, 27 )
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 27 )
+
+[node name="Rock4" type="Sprite" parent="Positions/Down/Obstacles"]
+
+transform/pos = Vector2( -345.285, 27 )
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 27 )
+
+[node name="Snake0" type="Sprite" parent="Positions/Down/Obstacles"]
+
+transform/pos = Vector2( -120.218, 23.3216 )
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 28 )
+
+[node name="Snake1" type="Sprite" parent="Positions/Down/Obstacles"]
+
+transform/pos = Vector2( -195.218, 23.3216 )
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 28 )
+
+[node name="Snake2" type="Sprite" parent="Positions/Down/Obstacles"]
+
+transform/pos = Vector2( -292.931, 23.3216 )
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 28 )
+
+[node name="Snake3" type="Sprite" parent="Positions/Down/Obstacles"]
+
+transform/pos = Vector2( -381.486, 23.3216 )
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 28 )
+
+[node name="Horizon" type="Node2D" parent="Positions"]
+
+[node name="Mountain" type="Node2D" parent="Positions/Horizon"]
+
+editor/display_folded = true
+transform/pos = Vector2( 308, 181 )
+
+[node name="Position1" type="Sprite" parent="Positions/Horizon/Mountain"]
+
+transform/pos = Vector2( -1, 4 )
+texture = ExtResource( 29 )
+
+[node name="Position2" type="Sprite" parent="Positions/Horizon/Mountain"]
+
+transform/pos = Vector2( 92, 4 )
+texture = ExtResource( 29 )
+
+[node name="Position3" type="Sprite" parent="Positions/Horizon/Mountain"]
+
+transform/pos = Vector2( 182, 5 )
+texture = ExtResource( 29 )
+
+[node name="Position4" type="Sprite" parent="Positions/Horizon/Mountain"]
+
+transform/pos = Vector2( 275, 1 )
+texture = ExtResource( 29 )
+
+[node name="Position5" type="Sprite" parent="Positions/Horizon/Mountain"]
+
+transform/pos = Vector2( 367, 3 )
+texture = ExtResource( 29 )
+
+[node name="River" type="Node2D" parent="Positions/Horizon"]
+
+editor/display_folded = true
+transform/pos = Vector2( 336.018, 213.331 )
+transform/scale = Vector2( -1, 1 )
+
+[node name="Position1" type="Sprite" parent="Positions/Horizon/River"]
+
+transform/pos = Vector2( 0, 2 )
+texture = ExtResource( 30 )
+
+[node name="Position2" type="Sprite" parent="Positions/Horizon/River"]
+
+transform/pos = Vector2( -93, 4 )
+texture = ExtResource( 30 )
+
+[node name="Position3" type="Sprite" parent="Positions/Horizon/River"]
+
+transform/pos = Vector2( -183, 4 )
+texture = ExtResource( 30 )
+
+[node name="Position4" type="Sprite" parent="Positions/Horizon/River"]
+
+transform/pos = Vector2( -276, 1 )
+texture = ExtResource( 30 )
+
+[node name="Position5" type="Sprite" parent="Positions/Horizon/River"]
+
+transform/pos = Vector2( -367, 3 )
+texture = ExtResource( 30 )
+
+[node name="Teepee" type="Node2D" parent="Positions/Horizon"]
+
+transform/pos = Vector2( 296.601, 251.894 )
+
+[node name="Position1" type="Sprite" parent="Positions/Horizon/Teepee"]
+
+transform/pos = Vector2( 0, -14 )
+texture = ExtResource( 31 )
+
+[node name="Position2" type="Sprite" parent="Positions/Horizon/Teepee"]
+
+transform/pos = Vector2( 94, -14 )
+texture = ExtResource( 31 )
+
+[node name="Position3" type="Sprite" parent="Positions/Horizon/Teepee"]
+
+transform/pos = Vector2( 183, -14 )
+texture = ExtResource( 31 )
+
+[node name="Position4" type="Sprite" parent="Positions/Horizon/Teepee"]
+
+transform/pos = Vector2( 278, -14 )
+texture = ExtResource( 31 )
+
+[node name="Position5" type="Sprite" parent="Positions/Horizon/Teepee"]
+
+transform/pos = Vector2( 368, -14 )
+texture = ExtResource( 31 )
+
+[node name="Chief" type="Sprite" parent="Positions/Horizon/Teepee"]
+
+transform/pos = Vector2( 398, 0 )
+texture = ExtResource( 32 )
+
+[node name="RIP" type="Sprite" parent="Positions"]
+
+transform/pos = Vector2( 500.562, 345.184 )
+texture = ExtResource( 18 )
+
+[node name="Wagon" type="Node2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 657, 415 )
+script/script = ExtResource( 33 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Wagon" type="Sprite" parent="Wagon"]
+
+editor/display_folded = true
+transform/pos = Vector2( 2, 0 )
+texture = ExtResource( 20 )
+
+[node name="Wheels" type="Node2D" parent="Wagon/Wagon"]
+
+[node name="WheelFront" type="AnimatedSprite" parent="Wagon/Wagon/Wheels"]
+
+transform/pos = Vector2( -20, 24 )
+frames = SubResource( 1 )
+animation = "default"
+
+[node name="WheelBack" type="AnimatedSprite" parent="Wagon/Wagon/Wheels"]
+
+transform/pos = Vector2( 13, 24 )
+frames = SubResource( 1 )
+animation = "default"
+
+[node name="Breakable" type="Sprite" parent="Wagon/Wagon/Wheels"]
+
+transform/pos = Vector2( -30, 21 )
+texture = ExtResource( 22 )
+
+[node name="Pow" type="Sprite" parent="Wagon/Wagon"]
+
+visibility/visible = false
+transform/pos = Vector2( -53, -20 )
+texture = ExtResource( 26 )
+
+[node name="PowTimer" type="Timer" parent="Wagon/Wagon/Pow"]
+
+process_mode = 1
+wait_time = 0.15
+one_shot = false
+autostart = false
+
+[node name="Animals" type="Node2D" parent="Wagon"]
+
+editor/display_folded = true
+transform/pos = Vector2( -71, 7 )
+
+[node name="FarFront" type="Node2D" parent="Wagon/Animals"]
+
+transform/pos = Vector2( -26, 4 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Wagon/Animals/FarFront"]
+
+transform/scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 2 )
+animation = "default"
+frame = 1
+playing = true
+
+[node name="CloseFront" type="Node2D" parent="Wagon/Animals"]
+
+transform/pos = Vector2( 10, 4 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Wagon/Animals/CloseFront"]
+
+transform/scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 2 )
+animation = "default"
+frame = 1
+playing = true
+
+[node name="FarBack" type="Node2D" parent="Wagon/Animals"]
+
+transform/pos = Vector2( -15, -4 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Wagon/Animals/FarBack"]
+
+transform/scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 3 )
+animation = "default"
+playing = true
+
+[node name="CloseBack" type="Node2D" parent="Wagon/Animals"]
+
+transform/pos = Vector2( 27, -5 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Wagon/Animals/CloseBack"]
+
+transform/scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 4 )
+animation = "default"
+frame = 1
+playing = true
+
+[node name="MovingHorizon" type="Node2D" parent="."]
+
+script/script = ExtResource( 41 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Mountain" type="Sprite" parent="MovingHorizon"]
+
+visibility/visible = false
+texture = ExtResource( 29 )
+
+[node name="River" type="Sprite" parent="MovingHorizon"]
+
+visibility/visible = false
+transform/scale = Vector2( -1, 1 )
+texture = ExtResource( 30 )
+
+[node name="Teepee" type="Sprite" parent="MovingHorizon"]
+
+visibility/visible = false
+texture = ExtResource( 31 )
+
+[node name="Chief" type="Sprite" parent="MovingHorizon"]
+
+visibility/visible = false
+transform/pos = Vector2( 694.601, 251.894 )
+texture = ExtResource( 32 )
+
+[connection signal="input_event" from="Reset" to="." method="_on_Control_input_event"]
+
+[connection signal="input_event" from="Reset" to="Reset" method="_on_Reset_input_event"]
+
+[connection signal="input_event" from="Pause" to="." method="_on_Pause_input_event"]
+
+[connection signal="input_event" from="Pause" to="Pause" method="_on_Pause_input_event"]
+
+[connection signal="input_event" from="Up" to="Up" method="_on_Up_input_event"]
+
+[connection signal="input_event" from="Up" to="Wagon" method="_on_Up_input_event"]
+
+[connection signal="input_event" from="Down" to="Down" method="_on_Down_input_event"]
+
+[connection signal="input_event" from="Down" to="Wagon" method="_on_Down_input_event"]
+
+[connection signal="input_event" from="Shoot" to="Shoot" method="_on_Shoot_input_event"]
+
+[connection signal="input_event" from="Shoot" to="Wagon" method="_on_Shoot_input_event"]
+
+[connection signal="timeout" from="RIP/RIPTimer" to="." method="_on_RIPTimer_timeout"]
+
+[connection signal="timeout" from="Generator" to="." method="_on_Generator_timeout"]
+
+[connection signal="timeout" from="Generator" to="MovingHorizon" method="_on_Generator_timeout"]
+
+[connection signal="timeout" from="Wagon/Wagon/Pow/PowTimer" to="Wagon" method="_on_PowTimer_timeout"]
+
+

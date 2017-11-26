@@ -1,0 +1,79 @@
+[gd_scene load_steps=9 format=1]
+
+[ext_resource path="res://Scripts/Gidit.gd" type="Script" id=1]
+[ext_resource path="res://Assets/digit2.png" type="Texture" id=2]
+[ext_resource path="res://Assets/digit3.png" type="Texture" id=3]
+[ext_resource path="res://Assets/digit1.png" type="Texture" id=4]
+[ext_resource path="res://Assets/digit5.png" type="Texture" id=5]
+[ext_resource path="res://Assets/digit6.png" type="Texture" id=6]
+[ext_resource path="res://Assets/digit4.png" type="Texture" id=7]
+[ext_resource path="res://Assets/digit7.png" type="Texture" id=8]
+
+[node name="Digit" type="Node2D"]
+
+script/script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="0" type="Sprite" parent="."]
+
+texture = ExtResource( 2 )
+
+[node name="1" type="Sprite" parent="."]
+
+texture = ExtResource( 3 )
+
+[node name="2" type="Sprite" parent="."]
+
+texture = ExtResource( 4 )
+
+[node name="3" type="Sprite" parent="."]
+
+texture = ExtResource( 5 )
+
+[node name="4" type="Sprite" parent="."]
+
+texture = ExtResource( 6 )
+
+[node name="5" type="Sprite" parent="."]
+
+texture = ExtResource( 7 )
+
+[node name="6" type="Sprite" parent="."]
+
+texture = ExtResource( 8 )
+
+[node name="FadedCopies" type="Node2D" parent="."]
+
+visibility/opacity = 0.05
+
+[node name="7 7" type="Sprite" parent="FadedCopies"]
+
+texture = ExtResource( 2 )
+
+[node name="7 6" type="Sprite" parent="FadedCopies"]
+
+texture = ExtResource( 3 )
+
+[node name="7 5" type="Sprite" parent="FadedCopies"]
+
+texture = ExtResource( 4 )
+
+[node name="7 4" type="Sprite" parent="FadedCopies"]
+
+texture = ExtResource( 5 )
+
+[node name="7 3" type="Sprite" parent="FadedCopies"]
+
+texture = ExtResource( 6 )
+
+[node name="7 2" type="Sprite" parent="FadedCopies"]
+
+texture = ExtResource( 7 )
+
+[node name="7" type="Sprite" parent="FadedCopies"]
+
+texture = ExtResource( 8 )
+
+
