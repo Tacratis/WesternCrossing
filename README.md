@@ -5,7 +5,7 @@ https://itch.io/jam/game-off-2017
 Created by Tacratis, November 2017, using the Godot engine v.2.1.4
 https://godotengine.org/
 
-A ready to play version of the game will be available on the itch.io game jam page once the jam is finished (December 1st).
+A ready-to-play version of the game will be available on the itch.io game jam page once the jam is finished (December 1st).
 
 
 Western Crossing is part of the Throwback themed jam. It is inspired by the Game & Watch (by nintendo) handheld electronic game (80's 90's) for the layout and controls, and by The Oregon Trail game (MECC 1974) for the story and gameplay.
@@ -14,6 +14,8 @@ In Western Crossing you control a wagon pulled by oxen in your journey to cross 
 
 Finally, you may visit the occasional tent to get aid from the local Chief. The Chief will fix your wagon's wheel, if broken, provide one oxen, if you do not own 4, or give you 5 bullets.
 There is no defined goal, just try to cover as much distance as you can.
+
+
 
 
 Controls:
