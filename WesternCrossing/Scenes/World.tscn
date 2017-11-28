@@ -116,7 +116,6 @@ transform/pos = Vector2( 76, 0 )
 
 [node name="Mileage" type="Node2D" parent="."]
 
-editor/display_folded = true
 transform/pos = Vector2( 735, 165 )
 transform/scale = Vector2( 0.15, 0.15 )
 
@@ -274,6 +273,7 @@ autostart = true
 
 [node name="Positions" type="Node2D" parent="."]
 
+editor/display_folded = true
 visibility/opacity = 0.05
 __meta__ = {
 "_edit_group_": true,
@@ -893,7 +893,7 @@ transform/pos = Vector2( -26, 4 )
 transform/scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 2 )
 animation = "default"
-frame = 1
+frame = 3
 playing = true
 
 [node name="CloseFront" type="Node2D" parent="Wagon/Animals"]
@@ -905,7 +905,7 @@ transform/pos = Vector2( 10, 4 )
 transform/scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 2 )
 animation = "default"
-frame = 1
+frame = 3
 playing = true
 
 [node name="FarBack" type="Node2D" parent="Wagon/Animals"]
@@ -933,6 +933,7 @@ playing = true
 
 [node name="MovingHorizon" type="Node2D" parent="."]
 
+editor/display_folded = true
 script/script = ExtResource( 41 )
 __meta__ = {
 "_edit_lock_": true
@@ -960,6 +961,14 @@ visibility/visible = false
 transform/pos = Vector2( 694.601, 251.894 )
 texture = ExtResource( 32 )
 
+[node name="PauseBlink" type="Timer" parent="."]
+
+process/pause_mode = 2
+process_mode = 1
+wait_time = 0.6
+one_shot = false
+autostart = true
+
 [connection signal="input_event" from="Reset" to="." method="_on_Control_input_event"]
 
 [connection signal="input_event" from="Reset" to="Reset" method="_on_Reset_input_event"]
@@ -968,24 +977,26 @@ texture = ExtResource( 32 )
 
 [connection signal="input_event" from="Pause" to="Pause" method="_on_Pause_input_event"]
 
-[connection signal="input_event" from="Up" to="Up" method="_on_Up_input_event"]
-
 [connection signal="input_event" from="Up" to="Wagon" method="_on_Up_input_event"]
 
-[connection signal="input_event" from="Down" to="Down" method="_on_Down_input_event"]
+[connection signal="input_event" from="Up" to="Up" method="_on_Up_input_event"]
 
 [connection signal="input_event" from="Down" to="Wagon" method="_on_Down_input_event"]
 
-[connection signal="input_event" from="Shoot" to="Shoot" method="_on_Shoot_input_event"]
+[connection signal="input_event" from="Down" to="Down" method="_on_Down_input_event"]
 
 [connection signal="input_event" from="Shoot" to="Wagon" method="_on_Shoot_input_event"]
 
-[connection signal="timeout" from="RIP/RIPTimer" to="." method="_on_RIPTimer_timeout"]
+[connection signal="input_event" from="Shoot" to="Shoot" method="_on_Shoot_input_event"]
 
-[connection signal="timeout" from="Generator" to="." method="_on_Generator_timeout"]
+[connection signal="timeout" from="RIP/RIPTimer" to="." method="_on_RIPTimer_timeout"]
 
 [connection signal="timeout" from="Generator" to="MovingHorizon" method="_on_Generator_timeout"]
 
+[connection signal="timeout" from="Generator" to="." method="_on_Generator_timeout"]
+
 [connection signal="timeout" from="Wagon/Wagon/Pow/PowTimer" to="Wagon" method="_on_PowTimer_timeout"]
+
+[connection signal="timeout" from="PauseBlink" to="Wagon" method="_on_PauseBlink_timeout"]
 
 

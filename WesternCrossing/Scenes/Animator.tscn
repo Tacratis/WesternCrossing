@@ -6,7 +6,9 @@
 [ext_resource path="res://Assets/chief.png" type="Texture" id=4]
 [ext_resource path="res://Assets/teepee.png" type="Texture" id=5]
 
-[node name="Animator" type="Node2D"]
+[node name="Animator" type="Node2D" groups=[
+"Animators",
+]]
 
 script/script = ExtResource( 1 )
 
