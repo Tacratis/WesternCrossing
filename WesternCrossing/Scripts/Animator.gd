@@ -18,7 +18,10 @@ func reset():
 	get_node("On").stop()
 	get_node("Off").stop()
 	count = 0
-	type = 0
+	if (type==3 || type ==2):
+		queue_free()
+	else:
+		type = 0
 
 func killOx(snakePos, scale):
 	# start timer for flashing

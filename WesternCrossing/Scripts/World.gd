@@ -9,8 +9,8 @@ var miles
 
 func _ready():
 	pause = false
-	gamePause=false
 	reset()
+	gamePause()
 
 func _on_Generator_timeout():
 	var chance = randf()
@@ -68,8 +68,10 @@ func reset():
 	var wagon = get_node("Wagon")
 	wagon.reset()
 	updateBullets(wagon.bullets)
-	# update animator
-	get_node("Animator").reset()
+	# update animators
+	var animators = get_tree().get_nodes_in_group("Animators")
+	for animator in animators:
+		animator.reset()
 	#resume game
 	resume()
 	# reset moving horizon stuff
@@ -101,6 +103,7 @@ func gamePause():
 	if (gamePause):
 		gamePause = false
 		get_tree().set_pause(false)
+		get_node("Wagon").show()
 	else:
 		gamePause = true
 		get_tree().set_pause(true)
@@ -120,7 +123,7 @@ func updateBullets(bullets):
 		get_node("Bullets/Tens").show()
 		get_node("Bullets/Tens").set_value(tens)
 	else:
-		get_node("Bullets/Tens").hide()
+		get_node("Bullets/Tens").set_value(10)
 	var ones = present-tens*10
 	get_node("Bullets/Ones").set_value(ones)
 
@@ -136,12 +139,12 @@ func updateMiles(miles):
 		get_node("Mileage/Cs").show()
 		get_node("Mileage/Cs").set_value(Cs)
 	else:
-		get_node("Mileage/Cs").hide()
+		get_node("Mileage/Cs").set_value(10)
 	var tens = (present-Cs*100)/10
 	if (tens>0 || Cs>0):
 		get_node("Mileage/Tens").show()
 		get_node("Mileage/Tens").set_value(tens)
 	else:
-		get_node("Mileage/Tens").hide()
+		get_node("Mileage/Tens").set_value(10)
 	var ones = present-Cs*100-tens*10
 	get_node("Mileage/Ones").set_value(ones)

@@ -179,6 +179,7 @@ func resume():
 	wheels[2].play()
 	for i in range(0,4):
 		oxen[i].get_node("AnimatedSprite").play()
+	show()
 
 func getOxPos():
 	return oxen[animals-1].get_pos()
@@ -253,3 +254,13 @@ func visitTeepee():
 	var teepeePos = get_parent().get_node("Positions/Horizon/Teepee/Position5").get_global_pos()
 	animation.chiefGreet(chiefPos,teepeePos)
 	get_tree().get_root().add_child(animation)
+
+
+func _on_PauseBlink_timeout():
+	# blink wagon when paused
+	if (get_parent().gamePause==false):
+		return
+	if is_visible():
+		hide()
+	else:
+		show()
