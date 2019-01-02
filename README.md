@@ -2,7 +2,7 @@
 Game Off 2017 game jam on Itch.io
 https://itch.io/jam/game-off-2017
 
-Created by Tacratis, November 2017, using the Godot engine v.2.1.4
+Created by Raphael Alhadeff, November 2017, using the Godot engine v.2.1.4
 https://godotengine.org/
 
 A ready-to-play version of the game will be available on the itch.io game jam page once the jam is finished (December 1st).
