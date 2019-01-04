@@ -7,7 +7,8 @@ https://tacratis.itch.io/western-crossing
 Jam page:
 https://itch.io/jam/game-off-2017
 
-Western Crossing final results:
+Rating in jam:
+
 Theme:    #3/201
 Overall:  #22/201
 Graphics: #24/201
