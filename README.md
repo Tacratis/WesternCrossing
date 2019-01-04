@@ -16,8 +16,6 @@ Graphics: #24/201
 Created by Raphael Alhadeff, November 2017, using the Godot engine v.2.1.4
 https://godotengine.org/
 
-A ready-to-play version of the game will be available on the itch.io game jam page once the jam is finished (December 1st).
-
 
 Western Crossing is part of the Throwback themed jam. It is inspired by the Game & Watch (by nintendo) handheld electronic game (80's 90's) for the layout and controls, and by The Oregon Trail game (MECC 1974) for the story and gameplay.
 
