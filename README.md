@@ -1,6 +1,16 @@
 # WesternCrossing
 Game Off 2017 game jam on Itch.io
+
+Game page:
+https://tacratis.itch.io/western-crossing
+
+Jam page:
 https://itch.io/jam/game-off-2017
+
+Western Crossing final results:
+Theme:    #3/201
+Overall:  #22/201
+Graphics: #24/201
 
 Created by Raphael Alhadeff, November 2017, using the Godot engine v.2.1.4
 https://godotengine.org/
